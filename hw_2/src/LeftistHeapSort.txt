@@ -1,0 +1,117 @@
+using System;
+using System.Diagnostics;
+
+namespace CASort
+{
+    public static class LeftistHeap
+    {
+        public static void Main (string[] args)
+        {
+            int[] arr = new int[] { 23, 342, 5326, 83, 25, 7346, 84, 5, 225, 37, 9, 353, 734, 52, 47523, 5, -667, 34 };
+            LeftistHeapSort(arr);
+            for (int i = 0; i < arr.Length; i++)
+            {
+                Console.Write(arr[i] + " ");
+            }
+            Console.ReadKey();
+        }
+        
+        public class HeapNode
+        {
+            public int key { get; private set; }
+            public int npl;
+            public HeapNode parent;
+            public HeapNode leftChild;
+            public HeapNode rightChild;
+            public HeapNode(int key)
+            {
+                this.key = key;
+                this.npl = 0;
+            }
+        }
+
+        static HeapNode leftistHeap;
+
+        public static void LeftistHeapSort(int[] items)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                var node = new HeapNode(items[i]);
+                AddNode(ref leftistHeap, ref node);
+            }
+
+            for (int i = 0; i < items.Length; i++)
+            {
+                items[items.Length - i - 1] = ExtractMax(ref leftistHeap);
+            }
+        }   
+        
+        static int ExtractMax(ref HeapNode node)
+        {
+            int maxkey = node.key;
+            if (node.rightChild != null)
+            {
+                node.leftChild.parent = null;
+            }
+            if (node.rightChild != null)
+            {
+                node.rightChild.parent = null;
+            }
+            node = Merge(ref node.leftChild, ref node.rightChild);
+            return maxkey;
+        }
+
+        static HeapNode Merge(ref HeapNode node1, ref HeapNode node2)
+        {
+            if (node1 == null)
+            {
+                return node2;
+            }
+
+            if (node2 == null)
+            {
+                return node1;
+            }          
+
+            if (node1.key < node2.key)
+            {
+                Swap(ref node1, ref node2);
+            }
+
+            node1.rightChild = Merge(ref node1.rightChild, ref node2);
+            node1.rightChild.parent = node1;
+
+            if (GetNpl(node1.rightChild) > GetNpl(node1.leftChild))
+            {
+                Swap(ref node1.rightChild, ref node1.leftChild);
+            }
+            node1.npl = GetNpl(node1);
+            return node1;
+        }
+
+        static void Swap(ref HeapNode N1, ref HeapNode N2)
+        {
+            HeapNode temp = N1;
+            N1 = N2;
+            N2 = temp;
+        }
+
+        static void AddNode(ref HeapNode leftistHeap, ref HeapNode node)
+        {
+            leftistHeap = Merge(ref leftistHeap, ref node);
+        }
+
+        static int GetNpl(HeapNode node)
+        {
+            if (node == null)
+            {
+                return -1;
+            }
+            if (node.rightChild == null)
+            {
+                return 0;
+            }
+            return node.rightChild.npl + 1;
+        }
+    }
+}
