@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 
@@ -41,17 +41,17 @@ namespace Sorts
         }
 
         private void Merge(int start, int end, int length)
-        {                      
+        {
             List<List<int>> mergingLists = new List<List<int>>(ways);
             List<int> tempList;
             int[] tempArray = new int[end - start + 1];
-            int left, right, k;          
+            int left, right, k;
 
             for (int i = 0; (i < ways - 1) & (i < tempArray.Length); i++)
             {
                 tempList = new List<int>(length);
                 left = start + length * i;
-                right = left + length - 1;               
+                right = left + length - 1;
                 for (k = left; k <= right; k++)
                     tempList.Add(items[k]);
                 mergingLists.Add(tempList);
@@ -73,7 +73,7 @@ namespace Sorts
                 for (int i = 1; i < mergingLists.Count; i++)
                 {
                     if (mergingLists[min][0] > mergingLists[i][0])
-                        min = i;                    
+                        min = i;
                 }
                 tempArray[k] = mergingLists[min][0];
                 mergingLists[min].RemoveAt(0);

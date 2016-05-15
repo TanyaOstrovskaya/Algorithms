@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 
@@ -29,7 +29,7 @@ namespace Sorts
         }
 
         public int[] SelectionTreeSort()
-        {
+        {   
             int[] resultArray = new int[arrSize];
             for (int i = 0; i < arrSize; i++)
             {
@@ -78,14 +78,14 @@ namespace Sorts
 
         void SiftUp(int i)
         {
-            int largest = i;
-            int left = GetLeftChild(i);
-            int right = GetRightChild(i);
+            int largest = i;            
+            int r = GetRightChild(i);
+            int l = GetLeftChild(i);
 
-            if (items[right].key < items[left].key)
-                items[i] = items[right];
+            if (items[r].key < items[l].key)
+                items[i] = items[r];
             else
-                items[i] = items[left];
+                items[i] = items[l];
             if (i != 0)
                 SiftUp(GetParent(i));
         }
