@@ -16,6 +16,7 @@ namespace CASort
                 Console.Write(items[i] + " ");
             }
             Console.WriteLine(sw.Elapsed);
+		
         }
 
         static void MergeSort(int[] items, int left, int right)
