@@ -10,21 +10,21 @@
 
 using namespace std;
 
-//структура множества на массиве
+// Р±Р°Р·РѕРІС‹Рµ РѕРїРµСЂР°С†РёРё СЃ РјРЅРѕР¶РµСЃС‚РІР°РјРё
 struct SETINARRAY {
-	int m[MAXSETSIZE];	// массив, хранящий элементы множества
-	int n;				// действительное число эл-тов в множестве
+	int m[MAXSETSIZE];
+	int n;				
 };
 
-// Прототипы функций
-void Union(SETINARRAY &A, SETINARRAY &B, SETINARRAY &Res); // Res = A union B
-void Cross(SETINARRAY &A, SETINARRAY &B, SETINARRAY &Res);// Res = A cross B.
-void Difference(SETINARRAY &A, SETINARRAY &B, SETINARRAY &Res); // Разность Res = A \ B.
-short SymClass(char z); //Классификатор символов
-int StringToIntArray(string &p, int *r); // разбор строки в массив целых чисел
-string ArrayToString(int *p, int np); // для вывода
 
-int main() { // Точка входа в программу
+void Union(SETINARRAY &A, SETINARRAY &B, SETINARRAY &Res); 			// Res = A union B
+void Cross(SETINARRAY &A, SETINARRAY &B, SETINARRAY &Res);			// Res = A cross B.
+void Difference(SETINARRAY &A, SETINARRAY &B, SETINARRAY &Res); 	// Res = A \ B.
+short SymClass(char z);
+int StringToIntArray(string &p, int *r);
+string ArrayToString(int *p, int np);
+
+int main() { 
 	SETINARRAY X, Y, Z;
 	string s;
 	cin >> s;
@@ -42,7 +42,7 @@ int main() { // Точка входа в программу
 	return 0;
 }
 
-void Union(SETINARRAY &A, SETINARRAY &B, SETINARRAY &Res) {
+void Union (SETINARRAY &A, SETINARRAY &B, SETINARRAY &Res) {
 	int counter = 0, i = 0, j = 0;
 
 	while ((i != A.n) && (j != B.n)) {
@@ -155,10 +155,9 @@ int StringToIntArray(string &p, int *r) {
 	int k, p1 = -1, p2 = -1;
 	char buf[20];
 	short sClass;
-	int i = 0; // номер символа набираемого числа
-	int n = 0; // число страниц (текущая длина p)
-	int LastPunkt = -1; // последний символ из DEFIS или COMMA
-						// -1 значит никакого
+	int i = 0; 
+	int n = 0; 
+	int LastPunkt = -1; 						
 
 	if (!p.size()) {
 		return 0;
@@ -202,7 +201,7 @@ int StringToIntArray(string &p, int *r) {
 			break;
 		default:
 			return -1;
-		} // switch
+		} 
 	}
 	buf[i] = '\0';
 	if (LastPunkt == -1 || LastPunkt == COMMA) {
@@ -218,7 +217,7 @@ int StringToIntArray(string &p, int *r) {
 			r[n++] = k;
 		}
 	}
-	// сортировка
+	
 	bool b = true;
 	int t;
 	while (b) {

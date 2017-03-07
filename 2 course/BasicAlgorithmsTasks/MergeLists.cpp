@@ -3,7 +3,7 @@
 
 using namespace std;
 
-// адгоритм слияния двух отсортированных листов
+// алгоритм слияния двух отсортированных листов
 
 struct NODE{
    int Number;
@@ -17,8 +17,8 @@ int main(){
    int Arr1[]={2,3,5,9};
    int Arr2[]={4,6,7,11,16};
    NODE *Head1, *Head2;
-   Head1=MakeList(Arr1,sizeof(Arr1)/sizeof(int));
-   Head2=MakeList(Arr2,sizeof(Arr2)/sizeof(int));
+   Head1 = MakeList(Arr1,sizeof(Arr1)/sizeof(int));
+   Head2 = MakeList(Arr2,sizeof(Arr2)/sizeof(int));
    NODE *Head = JoinTwoList(Head1, Head2);
    cout << "Head";
    for(NODE* p1=Head->Next; p1!=NULL; p1=p1->Next){
@@ -66,11 +66,11 @@ NODE *JoinTwoList(NODE *Head1, NODE *Head2){
 
 
 
-NODE * MakeList(int Arr[], int n){
+NODE* MakeList(int Arr[], int n){
 
    NODE *Head=new NODE,*x;
-   Head->Next=NULL; //Явно указываем на NULL
-   Head->Number=INT_MAX; // Условное значение головы
+   Head->Next=NULL; 
+   Head->Number=INT_MAX; 
    x=Head;
 
    for (int i = 0; i < n; i++) {

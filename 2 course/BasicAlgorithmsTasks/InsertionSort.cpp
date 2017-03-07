@@ -3,6 +3,7 @@
 
 using namespace std;
 
+// алгоритм сортировки вставками
 void InsertionSort(int*, int);
 
 int main() {
@@ -17,7 +18,7 @@ int main() {
 	InsertionSort(A, N); 
 
 	for (int i = 0; i < N; ++i) {
-		cout << A[i] << " "; // ������
+		cout << A[i] << " "; 
 	}
 
 	delete[] A; 

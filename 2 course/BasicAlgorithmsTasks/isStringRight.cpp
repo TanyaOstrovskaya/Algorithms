@@ -4,11 +4,13 @@
 
 using namespace std;
 
+//определение правильности вложенности скобок в строке
+
 bool IsStringRight(string&); 
 
 struct STACK { 
 	char A[MAXSTACKSIZE]; 
-	int v; 
+	int v;	//количество элементов
 };
 
 STACK S;
@@ -18,7 +20,7 @@ int main() {
 	S.v = 0;
 
 	string str;
-	cin >> str; // ���� ������   
+	cin >> str; 
 	if (IsStringRight(str)) {
 		cout << "String is right";
 	}

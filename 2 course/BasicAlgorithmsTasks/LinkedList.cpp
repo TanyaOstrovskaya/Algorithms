@@ -23,7 +23,7 @@ int main(){
 }
 
 NODE * MakeList() {
-  //пример
+  //пример листа
   int Arr[]={2,3,3,3,5,5,8,9,9,9};
   NODE *Head = new NODE, *x;
   Head->Next=NULL;

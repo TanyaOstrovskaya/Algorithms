@@ -2,7 +2,7 @@
 
 using namespace std;
 
-// умножение двух полиномов
+// алгоритм умножения двух полиномов
 
 void MultPoly(int *, int *, int, int, int *);
 void printres(int *, int *, int, int, int *);

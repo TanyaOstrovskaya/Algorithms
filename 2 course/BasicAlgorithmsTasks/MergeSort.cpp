@@ -3,26 +3,25 @@
 
 using namespace std;
 
-// прототипы функций
 void merge(int*, int, int);
 void mergeRec(int*, int, int);
 int N;
+
+//Р°Р»РіРѕСЂРёС‚Рј СЃРѕСЂС‚РёСЂРѕРІРєРё СЃР»РёСЏРЅРёРµРј
 
 int main() {
 	cin >> N; 	
 
 	int* A = new int[N];
 	for (int i = 0; i < N; i++) {
-		//A[i] = rand() % 99 + 1;
 		cin >> A[i];
 	}
 
-	mergeRec(A, 0, N - 1); // вызов сортировки
+	mergeRec(A, 0, N - 1);
 
 	for (int i = 0; i < N; i++) {
-		cout << A[i] << " "; // печать
-	}
-	delete[] A; // освободили память
+		cout << A[i] << " ";	}
+	delete[] A; 
 
 	return 0;
 }
@@ -61,6 +60,7 @@ void merge(int *A, int left, int right) {
 		while (j <= right) {
 			A[k++] = tempArray[j++];
 		}	
+		delete[] tempArray;
 		return;
 	}
 
@@ -68,6 +68,7 @@ void merge(int *A, int left, int right) {
 		while (i <= m) {
 			A[k++] = tempArray[i++];
 		} 
+		delete[] tempArray;
 		return;
 	}
 };
